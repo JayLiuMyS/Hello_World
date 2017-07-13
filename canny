@@ -22,5 +22,5 @@ int main(int argc, char ** argv)
 	system("pause");
 	return -1;
 }
-
-
+ 
+//边缘检测算法canny
