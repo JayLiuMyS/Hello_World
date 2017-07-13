@@ -1,0 +1,26 @@
+# include "cv.h"
+# include "cxcore.h"
+# include "highgui.h"
+
+int main(int argc, char ** argv)
+{
+	//声明IplImage指针
+	IplImage * pImg = NULL;
+	IplImage * pCannyImg = NULL;
+	// 载入图像，强制转化为 Gray
+	if(argc == 2 &&(pImg = cvLoadImage(argv[1],0)) != 0)
+	{
+		pCannyImg = cvCreateImage(cvGetSize(pImg),IPL_DEPTH_8U,1);
+		cvCanny(pImg,pCannyImg,50,150,3); //Canny 边缘检测
+		cvNamedWindow("Canny",1);
+		cvShowImage("Canny",pCannyImg);
+		cvWaitKey(0);
+		cvDestroyWindow("Canny");
+		cvReleaseImage(& pCannyImg);
+		return 0;
+	}
+	system("pause");
+	return -1;
+}
+
+
